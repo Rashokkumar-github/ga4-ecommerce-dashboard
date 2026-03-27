@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from google.cloud import bigquery
 from google.oauth2 import service_account
@@ -51,11 +52,18 @@ def get_client():
             st.secrets["gcp_service_account"],
             scopes=scopes,
         )
-    else:
+    elif os.path.exists(CREDENTIALS_FILE):
         creds = service_account.Credentials.from_service_account_file(
             CREDENTIALS_FILE,
             scopes=scopes,
         )
+    else:
+        st.error(
+            "**No credentials found.** "
+            "Add your service account key to Streamlit Cloud via "
+            "**App Settings → Secrets** using the format in `.streamlit/secrets.toml.example`."
+        )
+        st.stop()
     return bigquery.Client(credentials=creds, project=PROJECT_ID)
 
 
