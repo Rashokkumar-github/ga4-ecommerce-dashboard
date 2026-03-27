@@ -431,7 +431,9 @@ def choropleth(df, col, color_scale, label, title):
             showlakes=True,
             projection_type="natural earth",
         ),
-        **_CHART_LAYOUT,
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font_color="#ccc",
         coloraxis_colorbar=dict(
             title=dict(text=label, font=dict(color="#ccc")),
             tickfont=dict(color="#ccc"),
