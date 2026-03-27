@@ -45,10 +45,17 @@ st.markdown("""
 
 @st.cache_resource
 def get_client():
-    creds = service_account.Credentials.from_service_account_file(
-        CREDENTIALS_FILE,
-        scopes=["https://www.googleapis.com/auth/bigquery"],
-    )
+    scopes = ["https://www.googleapis.com/auth/bigquery"]
+    if "gcp_service_account" in st.secrets:
+        creds = service_account.Credentials.from_service_account_info(
+            st.secrets["gcp_service_account"],
+            scopes=scopes,
+        )
+    else:
+        creds = service_account.Credentials.from_service_account_file(
+            CREDENTIALS_FILE,
+            scopes=scopes,
+        )
     return bigquery.Client(credentials=creds, project=PROJECT_ID)
 
 
