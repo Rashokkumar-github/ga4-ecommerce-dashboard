@@ -948,7 +948,6 @@ fig = go.Figure(go.Sankey(
 ))
 fig.update_layout(
     **_CHART_LAYOUT,
-    font=dict(family="DM Sans, sans-serif", size=12, color="#4A4A70"),
     height=520,
     margin=dict(t=10, b=10, l=10, r=10),
 )
