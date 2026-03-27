@@ -398,8 +398,8 @@ _CHART_LAYOUT = dict(
     plot_bgcolor="rgba(0,0,0,0)",
     paper_bgcolor="rgba(0,0,0,0)",
     font_color="#ccc",
-    margin=dict(t=10, b=0),
 )
+_DEFAULT_MARGIN = dict(t=10, b=0)
 
 def kpi_card(col, label, value, color="#4F8EF7"):
     col.markdown(f"""
@@ -511,7 +511,7 @@ with col_l:
         color_discrete_sequence=[COLORS["primary"]],
     )
     fig.update_traces(texttemplate="%{text:,}", textposition="outside")
-    fig.update_layout(**_CHART_LAYOUT)
+    fig.update_layout(**_CHART_LAYOUT, margin=_DEFAULT_MARGIN)
     st.plotly_chart(fig, use_container_width=True)
     st.caption("Unique sessions broken down by device category across the full period.")
 
@@ -524,7 +524,7 @@ with col_r:
         color="revenue", color_continuous_scale="Blues",
     )
     fig.update_traces(texttemplate="$%{text:,.0f}", textposition="outside")
-    fig.update_layout(coloraxis_showscale=False, **_CHART_LAYOUT)
+    fig.update_layout(coloraxis_showscale=False, **_CHART_LAYOUT, margin=_DEFAULT_MARGIN)
     st.plotly_chart(fig, use_container_width=True)
     st.caption("Total purchase revenue attributed to each traffic source/medium across the full period.")
 
@@ -549,7 +549,7 @@ with col_l:
         color_discrete_sequence=[COLORS["primary"]],
     )
     fig.update_traces(texttemplate="%{text}%", textposition="outside")
-    fig.update_layout(yaxis_range=[0, 100], **_CHART_LAYOUT)
+    fig.update_layout(yaxis_range=[0, 100], **_CHART_LAYOUT, margin=_DEFAULT_MARGIN)
     st.plotly_chart(fig, use_container_width=True)
     st.caption("% of sessions where the user was engaged (10s+ active, 2+ pageviews, or a conversion event).")
 
@@ -562,7 +562,7 @@ with col_r:
         color_discrete_sequence=[COLORS["success"]],
     )
     fig.update_traces(texttemplate="%{text}%", textposition="outside")
-    fig.update_layout(**_CHART_LAYOUT)
+    fig.update_layout(**_CHART_LAYOUT, margin=_DEFAULT_MARGIN)
     st.plotly_chart(fig, use_container_width=True)
     st.caption("% of sessions that resulted in at least one purchase event.")
 
@@ -581,7 +581,7 @@ fig = go.Figure(go.Funnel(
     textinfo="value+percent initial",
     marker=dict(color=["#4F8EF7", "#F39C12", "#E67E22", "#E74C3C"]),
 ))
-fig.update_layout(**_CHART_LAYOUT, margin=dict(t=10, b=0))
+fig.update_layout(**_CHART_LAYOUT, margin=_DEFAULT_MARGIN)
 st.plotly_chart(fig, use_container_width=True)
 st.caption(f"Drop-off at each step of the purchase journey. Cart abandonment rate: **{abandonment_rate}%** of sessions that added to cart did not complete a purchase.")
 
@@ -630,7 +630,7 @@ with col_r:
         line=dict(color=COLORS["purple"], width=3),
         marker=dict(size=10),
     ))
-    fig.update_layout(yaxis_title="AOV (USD)", xaxis_title="", **_CHART_LAYOUT)
+    fig.update_layout(yaxis_title="AOV (USD)", xaxis_title="", **_CHART_LAYOUT, margin=_DEFAULT_MARGIN)
     st.plotly_chart(fig, use_container_width=True)
     st.caption("Total revenue divided by number of transactions — shows how purchase value shifts during the holiday season.")
 
@@ -673,7 +673,7 @@ fig = px.bar(
     color="revenue", color_continuous_scale="Blues",
 )
 fig.update_traces(texttemplate="$%{text:,.0f}", textposition="outside")
-fig.update_layout(coloraxis_showscale=False, **_CHART_LAYOUT, height=360)
+fig.update_layout(coloraxis_showscale=False, **_CHART_LAYOUT, margin=_DEFAULT_MARGIN, height=360)
 st.plotly_chart(fig, use_container_width=True)
 st.caption("Total purchase revenue broken down by product category. Identifies which categories are most profitable — informs budget allocation and promotional strategy.")
 
