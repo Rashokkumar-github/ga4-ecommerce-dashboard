@@ -48,6 +48,26 @@ Grow e-commerce revenue by **20%** and reduce customer acquisition cost (CAC) th
 
 > *This framework is the backbone of the plan. Each subsequent slide maps to one of these stages.*
 
+```mermaid
+flowchart LR
+    S(["🔍 S\nSituation\nWhere are we now?"])
+    O(["🎯 O\nObjectives\nWhere do we want to be?"])
+    ST(["🗺️ S\nStrategy\nHow will we get there?"])
+    T(["⚙️ T\nTactics\nWhat specific actions?"])
+    A(["🚀 A\nAction\nWho · What · When?"])
+    C(["📏 C\nControl\nHow do we measure?"])
+
+    S --> O --> ST --> T --> A --> C
+    C -.->|iterates back| S
+
+    style S fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style O fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style ST fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style T fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style A fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style C fill:#1a3a5c,color:#fff,stroke:#4a8abf
+```
+
 | Stage | What It Means | Applied to This Plan | KPI Owner | Slide |
 |-------|---------------|---------------------|-----------|-------|
 | **Situation** | Where are we now? | Bounce 84%, CVR 1.37%, organic 34% | All 6 KPIs | Slide 1 |
@@ -78,6 +98,29 @@ Paid ROAS ────────► Control (≥4× gate before increasing CPC
 
 > *Framework: Porter (1980). Applied here to the Google Merchandise Store digital channel.*
 
+```mermaid
+flowchart TD
+    ENTRY["🟡 Threat of New Entrants\nMEDIUM — low tech barrier,\nbrand moat provides some protection"]
+    SUPPLY["🟢 Supplier Power\nLOW — Google internal\nsupply chain control"]
+    CENTER(["🏢 Google\nMerchandise\nStore"])
+    BUYER["🔴 Buyer Power\nHIGH — price-sensitive shoppers,\nAmazon one click away"]
+    RIVAL["🔴 Competitive Rivalry\nHIGH — crowded branded\nmerch space"]
+    SUB["🔴 Threat of Substitutes\nHIGH — Amazon, resellers,\nsecond-hand marketplaces"]
+
+    ENTRY  -->|"from above"| CENTER
+    SUPPLY -->|"from left"|  CENTER
+    BUYER  -->|"from right"| CENTER
+    RIVAL  -->|"from below"| CENTER
+    SUB    -->|"from below"| CENTER
+
+    style ENTRY  fill:#5c4a00,color:#fff,stroke:#c8a000
+    style SUPPLY fill:#0a3a1a,color:#fff,stroke:#2ecc71
+    style CENTER fill:#1a1a3a,color:#fff,stroke:#7f8fff,stroke-width:3px
+    style BUYER  fill:#3a0a0a,color:#fff,stroke:#e74c3c
+    style RIVAL  fill:#3a0a0a,color:#fff,stroke:#e74c3c
+    style SUB    fill:#3a0a0a,color:#fff,stroke:#e74c3c
+```
+
 ---
 
 ### Five Forces Assessment
@@ -106,6 +149,43 @@ Paid ROAS ────────► Control (≥4× gate before increasing CPC
 ## SLIDE 4 — Internal Review: McKinsey 7S Framework
 
 > *Assesses internal organisational alignment and identifies capability gaps.*
+
+```mermaid
+flowchart TD
+    SV(("💡 Shared Values\n—\nEvidence-based\ndecision making"))
+
+    STR["⚙️ Strategy\nData-driven revenue growth\n20% revenue target"]
+    STRUCT["🏗️ Structure\nCMO + Data Science\n+ Marketing"]
+    SYS["💻 Systems\nGA4 → BigQuery\n→ Dashboard → Agent"]
+    STYLE["🎯 Style\nAnalytics-first;\nevidence over intuition"]
+    STAFF["👥 Staff\nData scientists\n+ Digital marketers"]
+    SKILLS["🔧 Skills\nSQL · BigQuery\nGA4 · Python"]
+
+    SV --- STR
+    SV --- STRUCT
+    SV --- SYS
+    SV --- STYLE
+    SV --- STAFF
+    SV --- SKILLS
+    STR --- STRUCT
+    STR --- SYS
+    STRUCT --- SYS
+    STYLE --- STAFF
+    STYLE --- SKILLS
+    STAFF --- SKILLS
+
+    style SV     fill:#1a1a3a,color:#fff,stroke:#7f8fff,stroke-width:3px
+    style STR    fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style STRUCT fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style SYS    fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style STYLE  fill:#2a1a3a,color:#fff,stroke:#9b59b6
+    style STAFF  fill:#2a1a3a,color:#fff,stroke:#9b59b6
+    style SKILLS fill:#2a1a3a,color:#fff,stroke:#9b59b6
+```
+
+> 🔵 **Hard Ss** (Strategy · Structure · Systems) — tangible, easier to change  
+> 🟣 **Soft Ss** (Style · Staff · Skills) — culture-driven, harder to change  
+> ⚪ **Shared Values** — the core that connects everything
 
 ---
 
@@ -137,6 +217,23 @@ Paid ROAS ────────► Control (≥4× gate before increasing CPC
 
 > *All four quadrants anchored directly to the 6 KPIs and VQ-validated data.*
 
+```
+                    HELPFUL  ◄────────────────────►  HARMFUL
+                 ┌──────────────────────┬──────────────────────┐
+                 │     STRENGTHS        │      WEAKNESSES       │
+    I            │  ✅ Organic 34.26%   │  ❌ Bounce 84.22%     │
+    N            │  ✅ CVR measurable   │  ❌ Cart abandon 81%  │
+    T            │  ✅ BigQuery stack   │  ❌ CVR only 1.37%    │
+    E            │  ✅ AOV $113 peak    │  ❌ Organic < 40% tgt │
+    R            ├──────────────────────┼──────────────────────┤
+    N            │    OPPORTUNITIES     │       THREATS         │
+    A            │  🟢 SEO gap 5.7pp   │  🔴 Rising CPCs       │
+    L            │  🟢 Apparel upsell  │  🔴 Mobile CVR gap    │
+  / E            │  🟢 India + Canada  │  🔴 Seasonal AOV drop │
+    X            │  🟢 Cart recovery   │  🔴 High-bounce pages │
+    T            └──────────────────────┴──────────────────────┘
+```
+
 ---
 
 ### SWOT Matrix
@@ -161,6 +258,25 @@ Paid ROAS ────────► Control (≥4× gate before increasing CPC
 ## SLIDE 6 — STP: Segmentation, Targeting, Positioning
 
 > *Evidence base: VQ-8 (country revenue), VQ-9 (category revenue), VQ-3 (funnel stages).*
+
+```mermaid
+flowchart TD
+    ALL["🌍 Total addressable market\n354,857 sessions · 195+ countries"]
+    ALL --> SEG
+
+    SEG["① SEGMENT — Who is out there?\n📍 Geographic: US · India · Canada · UK · Spain · France\n🛒 Behavioural: Browsers → Cart-Adders → Purchasers"]
+    SEG --> TAR
+
+    TAR["② TARGET — Who do we focus on?\n⭐ Primary — High-intent US desktop non-converters\n🌱 Secondary — Organic searchers in India + Canada\n🔁 Tertiary — Existing buyers for upsell / cross-sell"]
+    TAR --> POS
+
+    POS["③ POSITION — How do we speak to them?\n🏷️ Premium Google Brand Merchandise\n💎 Trust via brand heritage · Justify $81.05 AOV\n📊 Data Agent as proof of analytics leadership"]
+
+    style ALL  fill:#0d2b3e,color:#fff,stroke:#4a8abf
+    style SEG  fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style TAR  fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style POS  fill:#0a3a1a,color:#fff,stroke:#2ecc71
+```
 
 ---
 
@@ -207,6 +323,31 @@ Paid ROAS ────────► Control (≥4× gate before increasing CPC
 ## SLIDE 7 — Ansoff Matrix: Growth Strategy
 
 > *Prioritisation framework for where to focus the 20% revenue growth target.*
+
+```mermaid
+flowchart LR
+    subgraph P1["⭐ PRIMARY — Market Penetration\nExisting Markets + Existing Products"]
+        A["CVR 1.37% → +15%\nBounce 84% → ≤40%\nCart recovery: 12,340 sessions"]
+    end
+    subgraph P2["✅ SECONDARY — Product Development\nExisting Markets + New Products"]
+        B["AOV $81 → $89\nApparel + Bags bundles\nYear-round gifting triggers"]
+    end
+    subgraph P3["✅ TERTIARY — Market Development\nNew Markets + Existing Products"]
+        C["India + Canada geo targets\nLocalised landing pages\nOrganic SEO for Tier 2"]
+    end
+    subgraph P4["❌ AVOID — Diversification\nNew Markets + New Products"]
+        D["Resource distraction\nOut of scope for this plan"]
+    end
+
+    P1 -->|"once CVR + bounce fixed"| P2
+    P1 -->|"once US organic mature"| P3
+    P4:::avoid
+
+    classDef avoid fill:#2a0a0a,color:#999,stroke:#5a1a1a
+    style P1 fill:#0a2a0a,color:#fff,stroke:#2ecc71,stroke-width:2px
+    style P2 fill:#1a3a5c,color:#fff,stroke:#4a8abf
+    style P3 fill:#1a3a5c,color:#fff,stroke:#4a8abf
+```
 
 ---
 
@@ -258,6 +399,22 @@ MARKETS         │  ✅ Tertiary          │   ❌ NOT recommended │
 ## SLIDE 8 — RACE Framework: Execution Plan
 
 > *Maps all 6 KPIs and VQ-validated insights to concrete digital marketing actions.*
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│  REACH   ██████████████████████████████████████  354,857 sessions  │
+│          Organic 34.26% · CPC 4.38% · Target: Organic ≥ 40%       │
+│                              ↓ 21.7% engage with product           │
+│  ACT     ████████████████████                    77,020 views      │
+│          Bounce 84.22% — Fix: /Apparel, YouTube, Dino Tee pages    │
+│                              ↓ 19.7% add to cart                   │
+│  CONVERT ████████████                            15,188 carts      │
+│          Cart abandon 81.25% → 4,848 purchases · CVR 1.37%         │
+│                              ↓ target +15% relative CVR            │
+│  ENGAGE  ████                                     4,452 txns       │
+│          AOV $81.05 · Target $89.16 · Upsell + gifting campaigns   │
+└────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
